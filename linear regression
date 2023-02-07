@@ -1,0 +1,66 @@
+from sklearn import linear_model
+
+# Define x and y variables
+
+x = df_scaled_1[["BALANCE"]]
+y = df_scaled_1.B1
+
+# Split Dataset
+
+x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = 0.3, random_state = 42)
+
+# Train Dataset
+
+from sklearn.linear_model import LinearRegression
+
+lm_1 = LinearRegression()
+lm_1.fit(x_train, y_train)
+
+# Predict Data
+
+y_pred = lm_1.predict(x_test)
+print(y_pred)
+
+# Evaluate the Model 
+
+from sklearn.metrics import r2_score
+
+r2_score(y_test,y_pred)
+
+from sklearn.metrics import mean_squared_error
+
+mean_squared_error(y_test,y_pred)
+
+from sklearn.metrics import mean_squared_error
+from math import sqrt
+
+rmse = sqrt(mean_squared_error(y_test, y_pred))
+rmse
+
+# Plot in a Scatter Plot
+# Predicted vs Actual Values of B1
+
+plt.figure(figsize = (15, 10))
+plt.title("Predicted vs Actual Values of B1\n", fontsize = 12)
+plt.xlabel("Actual B1", fontsize = 12)
+plt.ylabel("Predicted B1", fontsize = 12)
+plt.scatter(y_test, y_pred)
+
+# Linear Regression Chart for B1
+
+plt.figure(figsize = (15, 10))
+plt.title("Linear Regression for B1\n", fontsize = 12)
+plt.xlabel("Actual", fontsize = 12)
+plt.ylabel("Predicted", fontsize = 12)
+plt.scatter(y_test, y_pred, color = "red")
+plt.scatter(x_train,y_train)
+plt.scatter(x_test,y_pred, color = "green")
+plt.plot(x_test,y_pred, color = "black")
+
+# Insights from Linear Regression
+
+r_sq = lm_1.score(x, y)
+
+print(f"Coefficient of Determination: {r_sq}")
+print(f"Intercept of the equation: {lm_1.intercept_}")
+print(f"Coefficient of the equation: {lm_1.coef_}")
