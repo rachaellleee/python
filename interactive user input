@@ -1,0 +1,29 @@
+# Developing an interactive user input which allows users to query if a particular person was/is a staff of the organization
+# Enter name by user and print the answer to the user’s question if that person can be found in the records
+# Allow users to continue to make another query, until otherwise
+
+import datetime
+
+x = datetime.date(2022, 5, 1)
+find = True 
+
+while find = = True:
+   
+   search = input ("Enter staff's name: ").title()
+   for i in range(len(tma_df.Staff)):
+       
+       if (search = = (tma_df.Staff[i]) and tma_df.LeftDate[i] = = x):
+            print("The name you have entered is in the organisation.")
+            
+            break
+        
+        elif i = = (len(tma_df.Staff)-1):
+            print("The name you have entered is not in the organisation.")
+    
+    search_again = input("Would you like to search another name? (Y/N) ").title()
+    if search_again = = ("Y") or search_again = = ("Yes"):
+        print("Please proceed.")
+    
+    else: 
+        print("Have a nice day!")
+        find = False
